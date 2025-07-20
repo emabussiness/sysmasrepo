@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Tipo de IVA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Formulario de Tipo de IVA</h1>
+        <form th:action="@{/tiposiva}" th:object="${tipoIVA}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="porcentaje">Porcentaje:</label>
+                <input type="number" id="porcentaje" th:field="*{porcentaje}" class="form-control" step="0.01" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/tiposiva" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+</body>
+</html>

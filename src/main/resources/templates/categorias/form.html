@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Categoría</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Formulario de Categoría</h1>
+        <form th:action="@{/categorias}" th:object="${categoria}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/categorias" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+</body>
+</html>

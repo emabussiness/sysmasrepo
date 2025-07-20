@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Unidades de Medida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Lista de Unidades de Medida</h1>
+        <a href="/unidadesmedida/new" class="btn btn-primary mb-3">Nueva Unidad de Medida</a>
+        <a href="/dashboard" class="btn btn-info mb-3">Inicio</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Abreviatura</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="unidadMedida : ${unidadesMedida}">
+                    <td th:text="${unidadMedida.id}"></td>
+                    <td th:text="${unidadMedida.nombre}"></td>
+                    <td th:text="${unidadMedida.abreviatura}"></td>
+                    <td>
+                        <a th:href="@{/unidadesmedida/edit/{id}(id=${unidadMedida.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/unidadesmedida/delete/{id}(id=${unidadMedida.id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar esta unidad de medida?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        function confirmDelete(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta unidad de medida?')) {
+                window.location.href = '/unidadesmedida/delete/' + id;
+            }
+        }
+    </script>
+</body>
+</html>

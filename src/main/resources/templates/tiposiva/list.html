@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Tipos de IVA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Lista de Tipos de IVA</h1>
+        <a href="/tiposiva/new" class="btn btn-primary mb-3">Nuevo Tipo de IVA</a>
+        <a href="/dashboard" class="btn btn-info mb-3">Inicio</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Descripción</th>
+                    <th>Porcentaje</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="tipoIVA : ${tiposIVA}">
+                    <td th:text="${tipoIVA.id}"></td>
+                    <td th:text="${tipoIVA.descripcion}"></td>
+                    <td th:text="${tipoIVA.porcentaje}"></td>
+                    <td>
+                        <a th:href="@{/tiposiva/edit/{id}(id=${tipoIVA.id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/tiposiva/delete/{id}(id=${tipoIVA.id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este tipo de IVA?');">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <script>
+        function confirmDelete(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este tipo de IVA?')) {
+                window.location.href = '/tiposiva/delete/' + id;
+            }
+        }
+    </script>
+</body>
+</html>
