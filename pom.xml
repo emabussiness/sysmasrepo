@@ -11,6 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>sysmas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>sysmas</name>
 	<description>Sistema web</description>
 	<url/>
@@ -27,6 +28,7 @@
 		<url/>
 	</scm>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
